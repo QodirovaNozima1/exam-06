@@ -1,0 +1,25 @@
+.desck {
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-right: 5px;
+    margin-left: 8px;
+}
+.btr{
+    position: absolute;
+    bottom: 15px;
+    right: -40px;
+    opacity: 0;
+    transition: .3s;
+}
+.button{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}

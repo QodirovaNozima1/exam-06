@@ -1,0 +1,23 @@
+@media(max-width:800px){
+    .information{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+    .infor__img{
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .infor__text{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+    .buttons{
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
+@source "../node_modules/@acmecorp/ui-lib";
+*{
+    scroll-behavior: smooth;
+}

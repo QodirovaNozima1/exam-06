@@ -1,0 +1,17 @@
+@media(max-width:800px){
+    .pick{
+        padding: 20px;
+    }
+    .pick__box{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .pick__small{
+        width: 100%;
+    }
+    .pick__sm{
+        width: 100%;
+    }
+}
