@@ -10,7 +10,7 @@ import Footer from './components/footer/Footer';
 import Top from './components/top/Top';
 import Error from './components/error/Error';
 import Layout from './pages/layout/Layout';
-
+import Wishlist from './pages/wishlist/Wishlist';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -22,6 +22,7 @@ function App() {
           <Route path='/shop' element={<Shop />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/Wishlist' element={<Wishlist />} />
         </Route>
         <Route path='/*' element={<Error />} />
       </Routes>

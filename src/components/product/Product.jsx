@@ -1,48 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Product.css";
-import { request } from "../../api/Index";
+import { FaRegHeart } from "react-icons/fa"
+import { Link } from 'react-router-dom';
 import { FaCircle } from "react-icons/fa";
+import { useStateValue } from "../context";
+import { FaHeart } from "react-icons/fa";
 
-const Product = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    request
-      .get("/products", {
-        params: {
-          limit: 12,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setProducts(res.data);
-      })
-      .catch((err) => console.error("API Error:", err));
-  }, []);
-
+const Product = ({products,children}) => {
+  const [state,dispatch] = useStateValue()
+  console.log(state.wishlist);
+  
   return (
     <section className="py-10">
       <div className="container mx-auto">
-        <div className="mb-12 text-[#737373] text-center">
-          <h2 className="mb-2.5 text-[20px] font-normal">Featured Products</h2>
-          <h3 className="mb-2.5 text-[24px] font-bold text-[#252B42]">
-            BESTSELLER PRODUCTS
-          </h3>
-          <p className="text-[14px] font-normal">
-            Problems trying to resolve the conflict between
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-24">
-          {products.length > 0 ? (
-            products.map((product) => (
-              <div key={product.id} className="rounded-lg flex flex-col items-center hover:shadow-xl duration-4 pt-4">
-                <div className="w-[239px] aspect-square overflow-hidden rounded-lg pl-7">
+      {children}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-24">
+            {products?.map((product) => (
+              <div key={product.id} className="rounded-lg flex flex-col items-center  pt-4">
+                <div className="w-[239px] aspect-square overflow-hidden rounded-lg pl-7 relative">
+                <Link to = {`/product/${product.id}`}>
                   <img
                     className="h-full object-contain"
                     src={product.image}
                     alt=""
                   />
+                  </Link> 
+                  <button onClick={()=> dispatch({type:"TOGGLE_LIKE", payload:product})} className="absolute top-1 right-1 text-2xl">
+                  {
+                    state.wishlist?.some(({id})=> id === product.id) ?
+                    <FaHeart  className="text-red-400"/>
+                    :
+                    <FaRegHeart/>
+                  }
+                  </button>
                 </div>
                 <div className="p-4 text-center flex flex-col items-center">
                   <h2
@@ -76,13 +66,10 @@ const Product = () => {
                   </div>
                 </div>
               </div>
-            ))
-          ) : (
-            <p className="text-center text-[#737373]">Loading products...</p>
-          )}
+            ))}
         </div>
       </div>
-    </section>
+      </section>
   );
 };
 

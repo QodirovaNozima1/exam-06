@@ -60,7 +60,9 @@ const Header = () => {
             <div className="icons flex gap-4 text-[#23A6F0] items-center font-normal">
             <IoMdSearch />
             <BsCart2 />
+            <Link to={"/wishlist"}>
             <IoIosHeartEmpty />
+            </Link>
             </div>
           </div>
       </div>
